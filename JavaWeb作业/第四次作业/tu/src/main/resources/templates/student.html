@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/student.css}">
+  <script th:src="@{/js/axios.min.js}"></script>
+</head>
+<body>
+  <div id="app">
+    <div id="imgs_div">
+      <div id="imgs">
+        <img src="http://127.0.0.1:8080/img/HelloKitty1.jpg">
+        <img src="http://127.0.0.1:8080/img/Doraemon2.jpg">
+        <img src="http://127.0.0.1:8080/img/AngryBird3.jpg">
+        <img src="http://127.0.0.1:8080/img/SpongeBob4.jpg">
+      </div>
+    </div>
+    <div id="ajax">
+      <div id="t_jiao">
+        <span><input class="r" type="radio" name="xz" value="HelloKitty1" id="1"><label for="1">kitty猫</label></span>
+        <span><input class="r" type="radio" name="xz" value="Doraemon2" id="2"><label for="2">哆啦A梦</label></span>
+        <span><input class="r" type="radio" name="xz" value="AngryBird3" id="3"><label for="3">奋斗的小鸟</label></span>
+        <span><input class="r" type="radio" name="xz" value="SpongeBob4" id="4"><label for="4">海绵宝宝</label></span>
+      </div>
+      <div id="btn">
+        <input type="submit" value="别眨眼睛">
+      </div>
+    </div>
+  </div>
+<script>
+  let xz = '';
+  document.querySelectorAll('.r').forEach(i => {
+    i.addEventListener('click', () => {
+      document.querySelectorAll(".r").forEach(i => {
+        if (i.checked === true) {
+          xz = i.value
+        }
+      });
+    })
+  });
+  document.querySelector('#btn').addEventListener('click', () => {
+    axios({
+      url: '/JavaWeb/1',
+      method: 'post',
+      data: {
+        xz
+      },
+      response: 'json',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    }).then(res => {
+      document.querySelectorAll("img").forEach((i, index) => {
+        i.src = 'http://127.0.0.1:8080/img/' + res.data[index] + '.jpg';
+      });
+    });
+  });
+</script>
+</body>
+</html>

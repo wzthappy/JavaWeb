@@ -1,0 +1,19 @@
+<!DOCTYPE web-app PUBLIC
+    "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+  <!-- servlet接口实现类类路径地址交给Tomcat -->
+  <servlet>
+    <servlet-name>oneSevlet</servlet-name>
+    <servlet-class>com.bjpowernode.controller02.OneServlet</servlet-class>
+  </servlet>
+
+  <!-- 为servlet接口实现类提供简短别名 -->
+  <servlet-mapping>
+    <servlet-name>oneSevlet</servlet-name>
+    <url-pattern>/one</url-pattern>
+  </servlet-mapping>
+</web-app>

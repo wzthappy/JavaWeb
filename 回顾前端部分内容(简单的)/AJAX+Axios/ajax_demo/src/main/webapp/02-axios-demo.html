@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<table>
+</table>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>  <!-- 只演示用的 -->
+<script>
+  // 3.
+  axios({
+    method: 'get',
+    url: 'http://localhost/ajax_demo_war_exploded/selectAllServlet',
+    responseType: 'json'
+  }).then(res => {
+    // 获取数据json数据
+    let data = res.data;
+    console.log(data)
+    for (let i = 0; i < data.length; i++) {
+      let user = data[i];
+      let htmlTableElement = document.querySelector('table');
+      let comment = document.createElement('tr')
+      htmlTableElement.appendChild(comment);
+      let td = document.createElement('td');
+      comment.appendChild(td);
+      td.innerText = i;
+      for (let userKey in user) {
+        let td = document.createElement('td');
+        comment.appendChild(td);
+        td.innerText = user[userKey];
+      }
+    }
+  });
+
+  axios({
+    method: 'post',
+    url: 'http://localhost/ajax_demo_war_exploded/addServlet',
+    data: {
+      username: '华为',  // 假数据
+      password: '9999'
+    }
+  }).then(res => {
+
+  });
+
+
+  // 导入 axios
+  // 1. get
+  // axios({
+  //   method: 'get',
+  //   url: 'http://localhost/ajax_demo_war_exploded/axiosServlet?username=zhangsan',
+  // }).then(res => {
+  //   alert(res.data);
+  //   console.log(res)
+  // });
+
+  // 2. post
+  // axios({
+  //   method: 'post',
+  //   url: 'http://localhost/ajax_demo_war_exploded/axiosServlet',
+  //   data: 'username=zhangsan'
+  // }).then(res => {
+  //   alert(res.data);
+  // });
+</script>
+</body>
+</html>

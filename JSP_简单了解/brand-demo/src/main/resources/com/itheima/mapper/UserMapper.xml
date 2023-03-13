@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace: 名称空间 -->
+<mapper namespace="com.itheima.mapper.UserMapper">
+
+
+  <insert id="add">
+    insert into tb_user(username, password, gender, addr)
+    values (#{username}, #{password}, #{gender}, #{addr});
+  </insert>
+
+  <update id="update">
+    update tb_user
+    set username=#{username},
+        password=#{password},
+        gender=#{gender},
+        addr=#{addr}
+    where id=#{id};
+  </update>
+  <delete id="delete">
+    delete from tb_user
+    where id=#{id}
+  </delete>
+
+  <select id="selectAll" resultType="user">
+    select *
+    from tb_user;
+  </select>
+
+  <select id="selectBy" resultType="com.itheima.pojo.User">
+    select *
+    from tb_user
+    where id = #{id};
+  </select>
+
+</mapper>
