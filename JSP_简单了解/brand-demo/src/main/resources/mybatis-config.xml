@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 有先后顺序 -->
+
+    <typeAliases>               <!-- 起别名 -->
+        <package name="com.itheima.pojo"/>
+    </typeAliases>
+    
+    <!--
+        environments：配置数据库连接环境信息。可以配置多个environment，
+    -->
+    <environments default="development">  <!-- 通过default属性切换不同的environment -->
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <!--数据库连接信息-->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/wanzhi?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="18729231365wzt"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--Mapper代理方式-->
+        <package name="com.itheima.mapper"/>
+    </mappers>
+</configuration>

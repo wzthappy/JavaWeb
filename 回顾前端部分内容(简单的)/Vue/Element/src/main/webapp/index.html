@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="./js/vue.js"></script>
+
+  <!--推荐使用 npm 的方式安装，它能更好地和 webpack 打包工具配合使用。-->
+  <!--npm i element-ui -S-->
+
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <!-- 引入组件库 -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <div class="block">
+    <span class="demonstration">区分颜色</span>
+    <el-rate
+        v-model="value2"
+        :colors="colors">
+    </el-rate>
+    {{value2}}
+  </div>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data() {
+      return {
+        value2: null,
+        colors: ['#99A9BF', '#F7BA2A', '#FF9900']  // 等同于 { 2: '#99A9BF', 4: { value: '#F7BA2A', excluded: true }, 5: '#FF9900' }
+      }
+    }
+  });
+</script>
+</body>
+</html>

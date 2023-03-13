@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <input v-model="url" type="text"><br/>
+  <!-- 插值表达式 -->
+  {{username}}
+
+  <a :href="url">点击一下</a>
+
+  <input type="button" value="一个按钮" @click="show">
+  <br/>
+  <div v-if="count == 3">div1</div>
+  <div v-else-if="count == 4">div2</div>
+  <div v-else>div3</div>
+  <br/>
+  <input v-model="count" type="text">
+
+  <div v-for="(addr, index) in addrs">
+    {{index}}  =  {{addr}}
+  </div>
+</div>
+
+<script src="./js/vue.js"></script>
+<script>
+  // 1. 创建vue对象
+  new Vue({
+    el: "#app",
+    data() {
+      return {
+        addrs: ['111', '2222', '3333', '4444'],
+        username: "",
+        url: 'https://www.baidu.com',
+        count: 3
+      }
+    },
+    methods: {
+      show() {
+        alert('我被点击了');
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+任务: 在线考试管理系统 ---- 用户信息管理模块
+
+子任务:
+      用户信息注册
+      用户信息查询
+      用户信息删除
+      用户信息更新
+
+准备工作:
+     1. 创建用户信息表 Users.frm
+      create table users(
+        userId int primary key auto_increment,  -- 用户名称
+        userName varchar(50),    -- 用户名称
+        password varchar(50),    -- 用户密码
+        sex char(1),             -- 用户性别 '男' 或者 '女'
+        email varchar(50)        -- 用户邮箱
+      );
+
+      2. 在src下 com.bjpowernode.entity.Users 实体类
+
+      3. 在src下 com.bjpowernode.mapper.UsersMapper 接口类，用MyBatis实现
+
+      4. 在web下WEB-INF下创建lib文件夹 存放jar包
+
+
